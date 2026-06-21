@@ -8,7 +8,7 @@ const Url = require('./models/Url');
 const { redirectLimiter } = require('./middleware/rateLimiter');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.port || 5000;
 
 app.use(
   cors({
@@ -52,7 +52,8 @@ app.get('/:shortCode', redirectLimiter, async (req, res) => {
 });
 
 async function startServer() {
-  const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/url-shortener';
+  const mongoUri =
+    process.env.mongodb_url || 'mongodb://localhost:27017/url-shortener';
 
   try {
     await mongoose.connect(mongoUri);
