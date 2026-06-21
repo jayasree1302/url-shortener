@@ -53,7 +53,7 @@ app.get('/:shortCode', redirectLimiter, async (req, res) => {
 
 async function startServer() {
   const mongoUri =
-    process.env.mongodb_url || 'mongodb://localhost:27017/url-shortener';
+    process.env.MONGODB_URI || 'mongodb://localhost:27017/url-shortener';
 
   try {
     await mongoose.connect(mongoUri);
